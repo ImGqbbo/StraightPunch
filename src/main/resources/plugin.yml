@@ -1,0 +1,7 @@
+name: FlexPunch
+version: '${project.version}'
+main: me.gabbo.flexpunch.FlexPunch
+authors: [ ImGqbbo ]
+description: Simple plugin to modify Minecraft vanilla punch
+commands:
+  punch:

@@ -1,0 +1,11 @@
+punch:
+  global: false
+  levels:
+    1:
+      horizontal: 0.9
+      vertical: 0.2
+    2:
+      horizontal: 0.9
+      vertical: 0.42
+  horizontal: 0.9
+  vertical: 0.45
