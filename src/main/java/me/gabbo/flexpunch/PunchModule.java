@@ -1,5 +1,6 @@
 package me.gabbo.flexpunch;
 
+import me.gabbo.flexpunch.utils.FileUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
@@ -68,10 +69,10 @@ public class PunchModule implements Listener {
     }
 
     private double getValue(String regex, int lvl) {
-        if (FlexPunch.config.getBoolean("punch.global")) {
-            return FlexPunch.config.getDouble("punch." + regex);
-        } else if (FlexPunch.config.contains("punch.levels." + lvl)) {
-            return FlexPunch.config.getDouble("punch.levels." + lvl + "." + regex);
+        if (FileUtil.ConfigurationFile.getBoolean("punch.global")) {
+            return FileUtil.ConfigurationFile.getDouble("punch." + regex);
+        } else if (FileUtil.ConfigurationFile.contains("punch.levels." + lvl)) {
+            return FileUtil.ConfigurationFile.getDouble("punch.levels." + lvl + "." + regex);
         }
 
         return regex == "horizontal" ? 0.9 : 0.42;

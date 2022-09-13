@@ -1,6 +1,6 @@
 package me.gabbo.flexpunch.Commands;
 
-import me.gabbo.flexpunch.FlexPunch;
+import me.gabbo.flexpunch.utils.FileUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,57 +22,57 @@ public class PunchCmd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            System.out.println("Questo e' un comando eseguibile soltanto dagli utenti!");
+            System.out.println(FileUtil.ConfigurationMessages.getString("onlyPlayers"));
             return false;
         }
 
         Player player = (Player) sender;
 
         if (!player.hasPermission("flexpunch.command.punch")) {
-            player.sendMessage("§cNon hai il permesso di eseguire questo comando!");
+            player.sendMessage(FileUtil.ConfigurationMessages.getString("noPermission"));
             return true;
         }
 
         if (args.length == 0) {
-            player.sendMessage("§9Flex§fPunch §8» §7By §bImGqbbo\n§cUso del comando: /punch [horizontal/vertical] [valore]");
+            player.sendMessage(FileUtil.ConfigurationMessages.getString("punchCommandUsage"));
             return true;
         }
 
         switch (args[0]) {
             case "horizontal":
                 if (args.length < 2) {
-                    player.sendMessage("§cDefinisci il punch orizzontale!");
+                    player.sendMessage(FileUtil.ConfigurationMessages.getString("defineHorizontalValue"));
                     return true;
                 }
 
                 if (!isNumeric(args[1])) {
-                    player.sendMessage("§cValuta orizzontale invalida! Definisci un numero.");
+                    player.sendMessage(FileUtil.ConfigurationMessages.getString("invalidValueUseNumber"));
                     return true;
                 }
 
-                FlexPunch.config.set("punch.horizontal", Double.parseDouble(args[1]));
-                FlexPunch.saveMainConfig();
+                FileUtil.ConfigurationFile.set("punch.horizontal", Double.parseDouble(args[1]));
+                FileUtil.saveFile(FileUtil.ConfigurationFile, FileUtil.ConfigFile);
 
-                player.sendMessage("§aPunch orizzontale aggiornato con successo!");
+                player.sendMessage(FileUtil.ConfigurationMessages.getString("horizontalPunchUpdated"));
                 break;
             case "vertical":
                 if (args.length < 2) {
-                    player.sendMessage("§cDefinisci il punch verticale!");
+                    player.sendMessage(FileUtil.ConfigurationMessages.getString("defineVerticalValue"));
                     return true;
                 }
 
                 if (!isNumeric(args[1])) {
-                    player.sendMessage("§cValuta verticale invalida! Definisci un numero.");
+                    player.sendMessage(FileUtil.ConfigurationMessages.getString("invalidValueUseNumber"));
                     return true;
                 }
 
-                FlexPunch.config.set("punch.vertical", Double.parseDouble(args[1]));
-                FlexPunch.saveMainConfig();
+                FileUtil.ConfigurationFile.set("punch.vertical", Double.parseDouble(args[1]));
+                FileUtil.saveFile(FileUtil.ConfigurationFile, FileUtil.ConfigFile);
 
-                player.sendMessage("§aPunch verticale aggiornato con successo!");
+                player.sendMessage(FileUtil.ConfigurationMessages.getString("verticalPunchUpdated"));
                 break;
             default:
-                player.sendMessage("§9Flex§fPunch §8» §7By §bImGqbbo\n§cUso del comando: /punch [horizontal/vertical] [valore]");
+                player.sendMessage(FileUtil.ConfigurationMessages.getString("punchCommandUsage"));
                 break;
         }
 
