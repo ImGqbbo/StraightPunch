@@ -1,8 +1,5 @@
-name: FlexPunch
+name: StraightPunch
 version: '${project.version}'
-main: me.gabbo.flexpunch.FlexPunch
+main: dev.imgqbbo.straightpunch.StraightPunch
 authors: [ ImGqbbo ]
-api-version: 1.12
-description: Simple plugin to modify Minecraft vanilla punch
-commands:
-  punch:
+description: Feature rich punch plugin made to fix the vanilla punch

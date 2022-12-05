@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.gabbo</groupId>
-    <artifactId>FlexPunch</artifactId>
-    <version>1.1</version>
+    <groupId>dev.imgqbbo</groupId>
+    <artifactId>StraightPunch</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>FlexPunch</name>
+    <name>StraightPunch</name>
 
-    <description>Simple plugin to modify Minecraft vanilla punch</description>
+    <description>Feature rich punch plugin made to fix the vanilla punch</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
