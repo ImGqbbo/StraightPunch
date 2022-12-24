@@ -110,7 +110,7 @@ public class PunchListener implements Listener {
         double boost = StraightPunch.getFileManager().getConfig().getDouble("punch.horizontal");
         double vertical = StraightPunch.getFileManager().getConfig().getDouble("punch.vertical");
 
-        if (StraightPunch.getFileManager().getConfig().contains("punch.levels." + level + ".horizontal")) {
+        if (StraightPunch.getFileManager().getConfig().contains("punch.levels." + level)) {
             boost = StraightPunch.getFileManager().getConfig().getDouble("punch.levels." + level + ".horizontal");
             vertical = StraightPunch.getFileManager().getConfig().getDouble("punch.levels." + level + ".vertical");
         }
