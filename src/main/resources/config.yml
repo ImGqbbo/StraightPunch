@@ -1,0 +1,19 @@
+punch:
+  levels:
+    '0':
+      straight: false
+      horizontal: 1.1
+      vertical: 0.4
+    '1':
+      straight: true
+      horizontal: 1.2
+      vertical: 0.4
+    '2':
+      straight: true
+      horizontal: 1
+      vertical: 0.42
+
+  # Every other level not listed will have this values
+  straight: true
+  horizontal: 1
+  vertical: 0.42

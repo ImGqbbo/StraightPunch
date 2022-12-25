@@ -1,0 +1,7 @@
+name: StraightPunch
+version: '${project.version}'
+main: dev.imgqbbo.straightpunch.StraightPunch
+authors: [ ImGqbbo ]
+description: Feature rich punch plugin made to fix the vanilla punch
+commands:
+  punch:
