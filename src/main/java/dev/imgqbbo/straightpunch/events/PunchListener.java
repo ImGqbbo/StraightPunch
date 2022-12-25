@@ -26,21 +26,15 @@ public class PunchListener implements Listener {
 
     @EventHandler
     public void onArrowShoot(EntityShootBowEvent event) {
-        if (event.isCancelled()) {
-            return;
-        }
+        if (event.isCancelled()) return;
 
         Entity proj = event.getProjectile();
-        if (!(proj instanceof Arrow)) {
-            return;
-        }
+        if (!(proj instanceof Arrow)) return;
 
         Arrow arrow = (Arrow) proj;
         ProjectileSource shooter = arrow.getShooter();
 
-        if (!(shooter instanceof Player)) {
-            return;
-        }
+        if (!(shooter instanceof Player)) return;
 
         Player player = (Player) shooter;
 
@@ -52,13 +46,11 @@ public class PunchListener implements Listener {
 
         boolean straight = StraightPunch.getFileManager().getConfig().getBoolean("punch.straight");
 
-        if (StraightPunch.getFileManager().getConfig().contains("punch.levels." + level + ".straight")) {
+        if (StraightPunch.getFileManager().getConfig().contains("punch.levels." + level)) {
             straight = StraightPunch.getFileManager().getConfig().getBoolean("punch.levels." + level + ".straight");
         }
 
-        if (!straight) {
-            return;
-        }
+        if (!straight) return;
 
         arrow.setVelocity(direction.multiply(boost));
         arrows.put(arrow, getFixedDirection(location, level));
@@ -66,46 +58,34 @@ public class PunchListener implements Listener {
 
     @EventHandler
     public void onPlayerVelocity(PlayerVelocityEvent event) {
-        if (event.isCancelled()) {
-            return;
-        }
+        if (event.isCancelled()) return;
 
         Player player = event.getPlayer();
         EntityDamageEvent cause = player.getLastDamageCause();
 
-        if (cause == null || cause.isCancelled() || !(cause instanceof EntityDamageByEntityEvent)) {
-            return;
-        }
+        if (cause == null || cause.isCancelled() || !(cause instanceof EntityDamageByEntityEvent)) return;
 
         EntityDamageByEntityEvent event1 = (EntityDamageByEntityEvent) cause;
         Entity damager = event1.getDamager();
 
-        if (!(damager instanceof Arrow)) {
-            return;
-        }
+        if (!(damager instanceof Arrow)) return;
 
         Arrow arrow = (Arrow) damager;
-        if (!arrows.containsKey(arrow)) {
-            return;
-        }
+        if (!arrows.containsKey(arrow)) return;
 
         ProjectileSource source = arrow.getShooter();
-        if (source != player) {
-            return;
-        }
+        if (source != player) return;
 
         Bukkit.getScheduler().runTaskLaterAsynchronously(StraightPunch.getInstance(), () ->
                 player.setNoDamageTicks(0), 2L);
+
         event.setVelocity(arrows.get(arrow));
     }
 
     public Vector getFixedDirection(Location location, int level) {
-        Vector vector = new Vector(0.0, 0.0, 0.0);
-
         double rotX = Math.toRadians(location.getYaw());
 
-        vector.setX(-Math.sin(rotX));
-        vector.setZ(Math.cos(rotX));
+        Vector vector = new Vector(-Math.sin(rotX), 0.0, Math.cos(rotX));
 
         double boost = StraightPunch.getFileManager().getConfig().getDouble("punch.horizontal");
         double vertical = StraightPunch.getFileManager().getConfig().getDouble("punch.vertical");
