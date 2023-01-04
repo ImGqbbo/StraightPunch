@@ -6,7 +6,7 @@
 
     <groupId>dev.imgqbbo</groupId>
     <artifactId>StraightPunch</artifactId>
-    <version>2.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>StraightPunch</name>

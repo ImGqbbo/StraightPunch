@@ -5,3 +5,4 @@ authors: [ ImGqbbo ]
 description: Feature rich punch plugin made to fix the vanilla punch
 commands:
   punch:
+    aliases: [ straightpunch, arrowpunch, arrow ]
